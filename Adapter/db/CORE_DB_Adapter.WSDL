@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:wsdlEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
-    <con:wsdl><![CDATA[<wsdl:definitions name="Core BankingDBAdapter" targetNamespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:adp="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <con:wsdl><![CDATA[<wsdl:definitions name="Core BankingDBAdapter" targetNamespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:adp="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <plt:partnerLinkType name="Core BankingDBAdapterPLType">
     <plt:role name="Core BankingDBAdapterRole">
       <plt:portType name="adp:Core BankingDBAdapterPort" />
@@ -125,8 +125,8 @@
     
   </wsdl:binding>
 </wsdl:definitions>]]></con:wsdl>
-    <con:dependencies>
-        <con:schemaRef isInclude="false" schemaLocation="CORE_DB_Adapter.xsd" namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" ref="Core BankingProv/Business/CORE_DB_Adapter" />
-    </con:dependencies>
-    <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
+  <con:dependencies>
+    <con:schemaRef isInclude="false" schemaLocation="CORE_DB_Adapter.xsd" namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" ref="Core BankingProv/Business/CORE_DB_Adapter" />
+  </con:dependencies>
+  <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
 </con:wsdlEntry>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:jcaEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
   <con:jca><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <adapter-config xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata" name="CoreDemoDBAdapter" adapter="db" wsdlLocation="CORE_DB_Adapter.wsdl">

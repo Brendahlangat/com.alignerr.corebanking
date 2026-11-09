@@ -1,110 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ser:businessServiceEntry xmlns:ser="http://xmlns.oracle.com/servicebus/business/config" xmlns:svc="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:ops="http://xmlns.oracle.com/servicebus/business/operations" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <ser:coreEntry>
-        <ser:description>Demo-only adapter configuration. Replace the placeholder datasource and SQL with authorized environment-specific values before deployment.</ser:description>
-        <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
-            <con:wsdl ref="Core BankingProv/Business/CORE_DB_Adapter" />
-            <con:binding>
-                <con:name>Core BankingDBAdapterPortBinding</con:name>
-                <con:namespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:namespace>
-            </con:binding>
-            <con:WSI-compliant>false</con:WSI-compliant>
-        </ser:binding>
-        <ops:operations enabled="true" xmlns:oper="http://xmlns.oracle.com/servicebus/flow/operations" xmlns:cus="http://www.bea.com/wli/config/customizations" xmlns:xt="http://www.bea.com/wli/config/xmltypes">
-            <ops:throttling enabled="false" />
-            <ops:resultCachingEnabled>true</ops:resultCachingEnabled>
-        </ops:operations>
-        <ser:ws-policy>
-            <svc:binding-mode>no-policies</svc:binding-mode>
-        </ser:ws-policy>
-        <ser:xqConfiguration>
-            <svc:snippetVersion>1.0</svc:snippetVersion>
-        </ser:xqConfiguration>
-    </ser:coreEntry>
-    <ser:endpointConfig>
-        <tran:provider-id>jca</tran:provider-id>
-        <tran:inbound>false</tran:inbound>
-        <tran:URI>
-            <env:value>jca://eis/DB/DemoRecords</env:value>
-        </tran:URI>
-        <tran:outbound-properties>
-            <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
-            <tran:retry-count>0</tran:retry-count>
-            <tran:retry-interval>30</tran:retry-interval>
-            <tran:retry-application-errors>true</tran:retry-application-errors>
-        </tran:outbound-properties>
-        <tran:all-headers>false</tran:all-headers>
-        <tran:provider-specific xsi:type="jca:JCAEndPointConfiguration">
-            <jca:jca-file ref="Core BankingProv/Adapter/db/CORE_DB_Adapter" />
-            <jca:adapter-name>Database Adapter</jca:adapter-name>
-            <jca:adapter-type>db</jca:adapter-type>
-            <jca:dispatch-policy>SBDefaultResponseWorkManager</jca:dispatch-policy>
-            <jca:always-use-wsdl>true</jca:always-use-wsdl>
-            <jca:connection-mode>managed</jca:connection-mode>
-            <jca:outbound-properties>
-                
-                
-                
-                
-                
-                
-                
-                
-                <jca:operation-properties>
-                    <jca:operation-name>queryCustomerAccount</jca:operation-name>
-                    <jca:spec-properties>
-                        <jca:property>
-                            <jca:name>SqlString</jca:name>
-                            <jca:value>SELECT tenant_id tenantId, record_reference accountReference, currency_code AccountCcy, branch_code Branch, record_label accountLabel, created_date OpenDate, record_id recordId, record_type AccountType, category_code ProductCd, category_label AccCategory, status_code ClosureFlag, status_date ClosureDate, activity_status InactiveStatus, source_tenant_id sourceTenantId, associated_record_id associatedRecordId, display_name displayName, external_reference externalReference, owner_name assignedOwnerName, address_line_1 addressLine1, address_line_2 addressLine2, address_line_3 addressLine3, locality locality, country_code CountryCode, postal_code postalCode, phone_number phoneNumber, mobile_number mobileNumber, email_address emailAddress, location_code locationCode, record_category recordCategory, record_subcategory recordSubcategory, status Status FROM DEMO_RECORDS WHERE tenant_id = #tenantId AND record_id = #internalRecordId AND external_reference = #externalRecordId</jca:value>
-                        </jca:property>
-                        <jca:property>
-                            <jca:name>GetActiveUnitOfWork</jca:name>
-                            <jca:value>false</jca:value>
-                        </jca:property>
-                    </jca:spec-properties>
-                </jca:operation-properties>
-                
-                
-                <jca:operation-properties>
-                    <jca:operation-name>inquireAccount</jca:operation-name>
-                    <jca:spec-properties>
-                        <jca:property>
-                            <jca:name>SqlString</jca:name>
-                            <jca:value>SELECT tenant_id tenantId, record_reference accountReference, currency_code AccountCcy, branch_code Branch, record_label accountLabel, created_date OpenDate, record_id recordId, record_type AccountType, category_code ProductCd, category_label AccCategory, status_code ClosureFlag, status_date ClosureDate, activity_status InactiveStatus, source_tenant_id sourceTenantId, associated_record_id associatedRecordId, display_name displayName, external_reference externalReference, owner_name assignedOwnerName, address_line_1 addressLine1, address_line_2 addressLine2, address_line_3 addressLine3, locality locality, country_code CountryCode, postal_code postalCode, phone_number phoneNumber, mobile_number mobileNumber, email_address emailAddress, location_code locationCode, record_category recordCategory, record_subcategory recordSubcategory, status Status FROM DEMO_RECORDS WHERE tenant_id = #tenantId AND record_id = #internalRecordId AND external_reference = #externalRecordId</jca:value>
-                        </jca:property>
-                        <jca:property>
-                            <jca:name>GetActiveUnitOfWork</jca:name>
-                            <jca:value>false</jca:value>
-                        </jca:property>
-                    </jca:spec-properties>
-                </jca:operation-properties>
-                
-                
-                
-                
-                
-                
-                
-                
-            </jca:outbound-properties>
-            <jca:endpoint-properties>
-                <jca:endpoint-property>
-                    <jca:name>jca.retry.maxInterval</jca:name>
-                    <jca:value>10</jca:value>
-                </jca:endpoint-property>
-                <jca:endpoint-property>
-                    <jca:name>jca.retry.count</jca:name>
-                    <jca:value>2</jca:value>
-                </jca:endpoint-property>
-                <jca:endpoint-property>
-                    <jca:name>jca.retry.interval</jca:name>
-                    <jca:value>1</jca:value>
-                </jca:endpoint-property>
-                <jca:endpoint-property>
-                    <jca:name>jca.retry.backoff</jca:name>
-                    <jca:value>2</jca:value>
-                </jca:endpoint-property>
-            </jca:endpoint-properties>
-        </tran:provider-specific>
-    </ser:endpointConfig>
+  <ser:coreEntry>
+    <ser:description>Demo-only adapter configuration. Replace the placeholder datasource and SQL with authorized environment-specific values before deployment.</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:wsdl ref="Core BankingProv/Business/CORE_DB_Adapter" />
+      <con:binding>
+        <con:name>Core BankingDBAdapterPortBinding</con:name>
+        <con:namespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:namespace>
+      </con:binding>
+      <con:WSI-compliant>false</con:WSI-compliant>
+    </ser:binding>
+    <ops:operations enabled="true" xmlns:oper="http://xmlns.oracle.com/servicebus/flow/operations" xmlns:cus="http://www.bea.com/wli/config/customizations" xmlns:xt="http://www.bea.com/wli/config/xmltypes">
+      <ops:throttling enabled="false" />
+      <ops:resultCachingEnabled>true</ops:resultCachingEnabled>
+    </ops:operations>
+    <ser:ws-policy>
+      <svc:binding-mode>no-policies</svc:binding-mode>
+    </ser:ws-policy>
+    <ser:xqConfiguration>
+      <svc:snippetVersion>1.0</svc:snippetVersion>
+    </ser:xqConfiguration>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jca</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI>
+      <env:value>jca://eis/DB/DemoRecords</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+    </tran:outbound-properties>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="jca:JCAEndPointConfiguration">
+      <jca:jca-file ref="Core BankingProv/Adapter/db/CORE_DB_Adapter" />
+      <jca:adapter-name>Database Adapter</jca:adapter-name>
+      <jca:adapter-type>db</jca:adapter-type>
+      <jca:dispatch-policy>SBDefaultResponseWorkManager</jca:dispatch-policy>
+      <jca:always-use-wsdl>true</jca:always-use-wsdl>
+      <jca:connection-mode>managed</jca:connection-mode>
+      <jca:outbound-properties>
+        <jca:operation-properties>
+          <jca:operation-name>queryCustomerAccount</jca:operation-name>
+          <jca:spec-properties>
+            <jca:property>
+              <jca:name>SqlString</jca:name>
+              <jca:value>SELECT tenant_id tenantId, record_reference accountReference, currency_code AccountCcy, branch_code Branch, record_label accountLabel, created_date OpenDate, record_id recordId, record_type AccountType, category_code ProductCd, category_label AccCategory, status_code ClosureFlag, status_date ClosureDate, activity_status InactiveStatus, source_tenant_id sourceTenantId, associated_record_id associatedRecordId, display_name displayName, external_reference externalReference, owner_name assignedOwnerName, address_line_1 addressLine1, address_line_2 addressLine2, address_line_3 addressLine3, locality locality, country_code CountryCode, postal_code postalCode, phone_number phoneNumber, mobile_number mobileNumber, email_address emailAddress, location_code locationCode, record_category recordCategory, record_subcategory recordSubcategory, status Status FROM DEMO_RECORDS WHERE tenant_id = #tenantId AND record_id = #internalRecordId AND external_reference = #externalRecordId</jca:value>
+            </jca:property>
+            <jca:property>
+              <jca:name>GetActiveUnitOfWork</jca:name>
+              <jca:value>false</jca:value>
+            </jca:property>
+          </jca:spec-properties>
+        </jca:operation-properties>
+        <jca:operation-properties>
+          <jca:operation-name>inquireAccount</jca:operation-name>
+          <jca:spec-properties>
+            <jca:property>
+              <jca:name>SqlString</jca:name>
+              <jca:value>SELECT tenant_id tenantId, record_reference accountReference, currency_code AccountCcy, branch_code Branch, record_label accountLabel, created_date OpenDate, record_id recordId, record_type AccountType, category_code ProductCd, category_label AccCategory, status_code ClosureFlag, status_date ClosureDate, activity_status InactiveStatus, source_tenant_id sourceTenantId, associated_record_id associatedRecordId, display_name displayName, external_reference externalReference, owner_name assignedOwnerName, address_line_1 addressLine1, address_line_2 addressLine2, address_line_3 addressLine3, locality locality, country_code CountryCode, postal_code postalCode, phone_number phoneNumber, mobile_number mobileNumber, email_address emailAddress, location_code locationCode, record_category recordCategory, record_subcategory recordSubcategory, status Status FROM DEMO_RECORDS WHERE tenant_id = #tenantId AND record_id = #internalRecordId AND external_reference = #externalRecordId</jca:value>
+            </jca:property>
+            <jca:property>
+              <jca:name>GetActiveUnitOfWork</jca:name>
+              <jca:value>false</jca:value>
+            </jca:property>
+          </jca:spec-properties>
+        </jca:operation-properties>
+      </jca:outbound-properties>
+      <jca:endpoint-properties>
+        <jca:endpoint-property>
+          <jca:name>jca.retry.maxInterval</jca:name>
+          <jca:value>10</jca:value>
+        </jca:endpoint-property>
+        <jca:endpoint-property>
+          <jca:name>jca.retry.count</jca:name>
+          <jca:value>2</jca:value>
+        </jca:endpoint-property>
+        <jca:endpoint-property>
+          <jca:name>jca.retry.interval</jca:name>
+          <jca:value>1</jca:value>
+        </jca:endpoint-property>
+        <jca:endpoint-property>
+          <jca:name>jca.retry.backoff</jca:name>
+          <jca:value>2</jca:value>
+        </jca:endpoint-property>
+      </jca:endpoint-properties>
+    </tran:provider-specific>
+  </ser:endpointConfig>
 </ser:businessServiceEntry>

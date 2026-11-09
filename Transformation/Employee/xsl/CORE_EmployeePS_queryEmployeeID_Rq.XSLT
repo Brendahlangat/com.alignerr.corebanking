@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:xsltEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
-    <con:xslt><![CDATA[<xsl:stylesheet version="1.0" exclude-result-prefixes="xsd xsi oracle-xsl-mapper xsl ns0 tns oraxsl DVMFunctions BasicCredentialsUserFunction UUIDUserFunction IsUserInRoleFunction IsUserInGroupFunction XrefFunctions" xmlns:oraxsl="http://www.oracle.com/XSL/Transform/java" xmlns:DVMFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:app="http://www.Core Banking.com/fixml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BasicCredentialsUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.BasicCredentialsUserFunction" xmlns:UUIDUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.UUIDUserFunction" xmlns:oracle-xsl-mapper="http://www.oracle.com/xsl/mapper/schemas" xmlns:ns0="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:IsUserInRoleFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInRoleFunction" xmlns:IsUserInGroupFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInGroupFunction" xmlns:XrefFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.xref.XrefFunctions" xmlns:ns1="http://xmlns.Brenda/ESB/EO/Parties/Employee/V1" xmlns:ns2="http://xmlns.Brenda/ESB/EO/Misc/Notification/V1" xmlns:fileo="http://xmlns.Brenda/ESB/EO/Misc/File/V1" xmlns:ns3="http://xmlns.Brenda/ESB/EO/Resilience/NationalIdentity/V1" xmlns:com="http://xmlns.Brenda/ESB/EO/Common/V1" xmlns:bio="http://xmlns.Brenda/ESB/EO/Resilience/Biometric/V1" xmlns:custeo="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1">
+  <con:xslt><![CDATA[<xsl:stylesheet version="1.0" exclude-result-prefixes="xsd xsi oracle-xsl-mapper xsl ns0 tns oraxsl DVMFunctions BasicCredentialsUserFunction UUIDUserFunction IsUserInRoleFunction IsUserInGroupFunction XrefFunctions" xmlns:oraxsl="http://www.oracle.com/XSL/Transform/java" xmlns:DVMFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:app="http://www.Core Banking.com/fixml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BasicCredentialsUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.BasicCredentialsUserFunction" xmlns:UUIDUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.UUIDUserFunction" xmlns:oracle-xsl-mapper="http://www.oracle.com/xsl/mapper/schemas" xmlns:ns0="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:IsUserInRoleFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInRoleFunction" xmlns:IsUserInGroupFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInGroupFunction" xmlns:XrefFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.xref.XrefFunctions" xmlns:ns1="http://xmlns.Brenda/ESB/EO/Parties/Employee/V1" xmlns:ns2="http://xmlns.Brenda/ESB/EO/Misc/Notification/V1" xmlns:fileo="http://xmlns.Brenda/ESB/EO/Misc/File/V1" xmlns:ns3="http://xmlns.Brenda/ESB/EO/Resilience/NationalIdentity/V1" xmlns:com="http://xmlns.Brenda/ESB/EO/Common/V1" xmlns:bio="http://xmlns.Brenda/ESB/EO/Resilience/Biometric/V1" xmlns:custeo="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1">
   <oracle-xsl-mapper:schema>
     <!--SPECIFICATION OF MAP SOURCES AND TARGETS, DO NOT MODIFY.-->
     <oracle-xsl-mapper:mapSources>
@@ -72,12 +72,12 @@
     </FIXML>
   </xsl:template>
 </xsl:stylesheet>]]></con:xslt>
-    <con:dependencies>
-        <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML.xsd">
-            <con:schema ref="ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML"/>
-        </con:mapperDependency>
-        <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Employee/V1/EmployeeEO.xsd">
-            <con:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Employee/V1/EmployeeEO"/>
-        </con:mapperDependency>
-    </con:dependencies>
+  <con:dependencies>
+    <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML.xsd">
+      <con:schema ref="ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML" />
+    </con:mapperDependency>
+    <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Employee/V1/EmployeeEO.xsd">
+      <con:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Employee/V1/EmployeeEO" />
+    </con:mapperDependency>
+  </con:dependencies>
 </con:xsltEntry>

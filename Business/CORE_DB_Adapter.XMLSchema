@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:schemaEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
-    <con:schema><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+  <con:schema><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema targetNamespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="QueryCustomerAccountInput" type="QueryCustomerAccountInputType" />
   <xs:complexType name="QueryCustomerAccountInputType">
@@ -67,5 +67,5 @@
   </xs:complexType>
 
 </xs:schema>]]></con:schema>
-    <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
+  <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
 </con:schemaEntry>

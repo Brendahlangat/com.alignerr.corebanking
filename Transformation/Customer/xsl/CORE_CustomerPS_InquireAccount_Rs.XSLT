@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:xsltEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
-    <con:xslt><![CDATA[<xsl:stylesheet version="1.0" exclude-result-prefixes="xsi oracle-xsl-mapper xsl xsd ns0 tns oraxsl DVMFunctions BasicCredentialsUserFunction UUIDUserFunction IsUserInRoleFunction IsUserInGroupFunction XrefFunctions" xmlns:oraxsl="http://www.oracle.com/XSL/Transform/java" xmlns:DVMFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BasicCredentialsUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.BasicCredentialsUserFunction" xmlns:oracle-xsl-mapper="http://www.oracle.com/xsl/mapper/schemas" xmlns:UUIDUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.UUIDUserFunction" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:app="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eo="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1" xmlns:IsUserInRoleFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInRoleFunction" xmlns:IsUserInGroupFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInGroupFunction" xmlns:XrefFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.xref.XrefFunctions" xmlns:acceo="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:com="http://xmlns.Brenda/ESB/EO/Common/V1" xmlns:ns1="http://xmlns.Brenda/ESB/EO/Resilience/Biometric/V1">
+  <con:xslt><![CDATA[<xsl:stylesheet version="1.0" exclude-result-prefixes="xsi oracle-xsl-mapper xsl xsd ns0 tns oraxsl DVMFunctions BasicCredentialsUserFunction UUIDUserFunction IsUserInRoleFunction IsUserInGroupFunction XrefFunctions" xmlns:oraxsl="http://www.oracle.com/XSL/Transform/java" xmlns:DVMFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BasicCredentialsUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.BasicCredentialsUserFunction" xmlns:oracle-xsl-mapper="http://www.oracle.com/xsl/mapper/schemas" xmlns:UUIDUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.UUIDUserFunction" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:app="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eo="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1" xmlns:IsUserInRoleFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInRoleFunction" xmlns:IsUserInGroupFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInGroupFunction" xmlns:XrefFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.xref.XrefFunctions" xmlns:acceo="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:com="http://xmlns.Brenda/ESB/EO/Common/V1" xmlns:ns1="http://xmlns.Brenda/ESB/EO/Resilience/Biometric/V1">
   <oracle-xsl-mapper:schema>
     <!--SPECIFICATION OF MAP SOURCES AND TARGETS, DO NOT MODIFY.-->
     <oracle-xsl-mapper:mapSources>
@@ -168,12 +168,12 @@
     </eo:ESBMsg>
   </xsl:template>
 </xsl:stylesheet>]]></con:xslt>
-    <con:dependencies>
-        <con:mapperDependency location="../../../Business/CORE_DB_Adapter.xsd">
-            <con:schema ref="Core BankingProv/Business/CORE_DB_Adapter"/>
-        </con:mapperDependency>
-        <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
-            <con:schema ref="Core BankingProv/MDS/CustomerEO"/>
-        </con:mapperDependency>
-    </con:dependencies>
+  <con:dependencies>
+    <con:mapperDependency location="../../../Business/CORE_DB_Adapter.xsd">
+      <con:schema ref="Core BankingProv/Business/CORE_DB_Adapter" />
+    </con:mapperDependency>
+    <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
+      <con:schema ref="Core BankingProv/MDS/CustomerEO" />
+    </con:mapperDependency>
+  </con:dependencies>
 </con:xsltEntry>

@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1"
-           xmlns="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1"
-           elementFormDefault="qualified">
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1" xmlns="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1" elementFormDefault="qualified">
   <xs:annotation>
     <xs:documentation>
       Generic project Customer envelope based on the request and response structures used by the current transformations.

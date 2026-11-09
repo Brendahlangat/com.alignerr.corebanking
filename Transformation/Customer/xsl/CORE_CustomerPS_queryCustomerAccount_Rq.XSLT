@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <con:xsltEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
-    <con:xslt><![CDATA[    <xsl:stylesheet version="1.0"
+  <con:xslt><![CDATA[    <xsl:stylesheet version="1.0"
                     exclude-result-prefixes="oracle-xsl-mapper"
                     xmlns:oracle-xsl-mapper="http://www.oracle.com/xsl/mapper/schemas"
                     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -40,12 +40,12 @@
     </app:QueryCustomerAccountInput>
   </xsl:template>
 </xsl:stylesheet>]]></con:xslt>
-    <con:dependencies>
-        <con:mapperDependency location="../../../Business/CORE_DB_Adapter.xsd">
-            <con:schema ref="Core BankingProv/Business/CORE_DB_Adapter"/>
-        </con:mapperDependency>
-        <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
-            <con:schema ref="Core BankingProv/MDS/CustomerEO"/>
-        </con:mapperDependency>
-    </con:dependencies>
+  <con:dependencies>
+    <con:mapperDependency location="../../../Business/CORE_DB_Adapter.xsd">
+      <con:schema ref="Core BankingProv/Business/CORE_DB_Adapter" />
+    </con:mapperDependency>
+    <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
+      <con:schema ref="Core BankingProv/MDS/CustomerEO" />
+    </con:mapperDependency>
+  </con:dependencies>
 </con:xsltEntry>
