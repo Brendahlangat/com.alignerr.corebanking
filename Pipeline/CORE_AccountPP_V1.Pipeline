@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="true" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/Account/V1/AccountPS"/>
+            <con:binding>
+                <con:name>AccountPSPortBinding</con:name>
+                <con:namespace>http://xmlns.Brenda/ESB/PS/Core Banking/Account/V1</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:pipeline name="request-N3f57c7ff.79382b7a.0.14d902488bb.N7fe6" type="request">
+            <con:stage name="Request Auditing">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con3:log xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7fcd</con2:id>
+                        <con3:logLevel>debug</con3:logLevel>
+                    </con3:log>
+                </con:actions>
+            </con:stage>
+            <con:stage name="Data Validation">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con1:assign varName="payload" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031a6a.7752c19d.0.14dbd290ba9.N7f6c</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>$body/*[1]</con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con1:validate xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031a6a.7752c19d.0.14dbd290ba9.N7f39</con2:id>
+                        <con1:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Accounts/Account/V1/AccountEO"/>
+                        <con1:schemaElement xmlns:v1="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1">v1:ESBMsg</con1:schemaElement>
+                        <con1:varName>body</con1:varName>
+                        <con1:location>
+                            <con2:xpathText>./*[1]</con2:xpathText>
+                        </con1:location>
+                    </con1:validate>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="response-N3f57c7ff.79382b7a.0.14d902488bb.N7fe5" type="response">
+            <con:stage name="Response Auditing">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con3:log xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7fc7</con2:id>
+                        <con3:logLevel>debug</con3:logLevel>
+                    </con3:log>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="balInq_request-N3f57c7ff.79382b7a.0.14d902488bb.N7fdf" type="request">
+            <con:stage name="RouteProcessing">
+                <con:context>
+                    <con1:userNsDecl prefix="v1" namespace="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                    <con1:userNsDecl prefix="fin" namespace="http://www.Core Banking.com/fixml" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:assign varName="ForEachResponse" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7fcb</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>&lt;ForEachFiXml xsi:schemaLocation="http://www.Core Banking.com/fixml BalInq.xsd" xmlns="http://www.Core Banking.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con1:foreach xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7fd9</con2:id>
+                        <con1:variable>body</con1:variable>
+                        <con1:expression>
+                            <con2:xpathText>./v1:ESBMsg/v1:RqData/v1:Account</con2:xpathText>
+                        </con1:expression>
+                        <con1:value-variable>Foreach</con1:value-variable>
+                        <con1:index-variable>Index</con1:index-variable>
+                        <con1:total-variable>Count</con1:total-variable>
+                        <con1:actions>
+                            <con1:wsCallout>
+                                <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7eae</con2:id>
+                                <con1:service ref="Core BankingProv/Business/CORE_Http_Adapter" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                <con1:request>
+                                    <con1:payload wrapped="false">Request</con1:payload>
+                                </con1:request>
+                                <con1:response>
+                                    <con1:payload wrapped="false">Response</con1:payload>
+                                </con1:response>
+                                <con1:requestTransform>
+                                    <con1:assign varName="Request">
+                                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f63</con2:id>
+                                        <con1:expr>
+                                            <con2:xsltTransform>
+                                                <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_balInq_Rq"/>
+                                                <con2:input>$body/*</con2:input>
+                                                <con2:param name="date">
+                                                    <con2:path>fn:current-dateTime()</con2:path>
+                                                </con2:param>
+                                                <con2:param name="index">
+                                                    <con2:path>data(xs:int($Index))</con2:path>
+                                                </con2:param>
+                                            </con2:xsltTransform>
+                                        </con1:expr>
+                                    </con1:assign>
+                                    <con3:report>
+                                        <con2:id>_ActionId-a031aea.17563fb5.0.14f26518ca7.N7ff8</con2:id>
+                                        <con3:expr>
+                                            <con2:xqueryText>$Request</con2:xqueryText>
+                                        </con3:expr>
+                                        <con3:labels>
+                                            <con3:key>ESBMessageId</con3:key>
+                                            <con3:varName>body</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./*:ESBMsg/*:MsgID</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                        <con3:labels>
+                                            <con3:key>Operation</con3:key>
+                                            <con3:varName>inbound</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./ctx:service/ctx:operation</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                    </con3:report>
+                                </con1:requestTransform>
+                                <con1:responseTransform>
+                                    <con3:report>
+                                        <con2:id>_ActionId-a031aea.17563fb5.0.14f26518ca7.N7ff5</con2:id>
+                                        <con3:expr>
+                                            <con2:xqueryText>$Response</con2:xqueryText>
+                                        </con3:expr>
+                                        <con3:labels>
+                                            <con3:key>ESBMessageId</con3:key>
+                                            <con3:varName>body</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./*:ESBMsg/*:MsgID</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                        <con3:labels>
+                                            <con3:key>Operation</con3:key>
+                                            <con3:varName>outbound</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./ctx:service/ctx:operation</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                    </con3:report>
+                                    <con1:ifThenElse>
+                                        <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7d6f</con2:id>
+                                        <con1:case id="_BranchId-a0322d5.2c30ea22.0.15495ff7564.N7d6e">
+                                            <con1:condition>
+                                                <con2:xqueryText>$inbound/ctx:service/ctx:operation='custAcctInquiry'</con2:xqueryText>
+                                            </con1:condition>
+                                            <con1:actions>
+                                                <con1:assign varName="AccountID">
+                                                    <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7c86</con2:id>
+                                                    <con1:expr>
+                                                        <con2:xqueryText><![CDATA[<fin:executeCore BankingScriptResponse>
+<fin:executeCore BankingScript_CustomData>
+<fin:CustAcctInquiry_RES>
+<fin:AcctDtls>
+<fin:AccountID>{data($Request/*:Body/*:executeCore BankingScriptRequest/*:executeCore BankingScript_CustomData/*:CustAcctInquiry_REQ/*:AccountID)}</fin:AccountID>
+</fin:AcctDtls>
+</fin:CustAcctInquiry_RES>
+</fin:executeCore BankingScript_CustomData>
+</fin:executeCore BankingScriptResponse>]]></con2:xqueryText>
+                                                    </con1:expr>
+                                                </con1:assign>
+                                                <con1:insert varName="Response">
+                                                    <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7cc3</con2:id>
+                                                    <con1:location>
+                                                        <con2:xpathText>$Response/fin:Body</con2:xpathText>
+                                                    </con1:location>
+                                                    <con1:where>first-child</con1:where>
+                                                    <con1:expr>
+                                                        <con2:xqueryText>$AccountID</con2:xqueryText>
+                                                    </con1:expr>
+                                                </con1:insert>
+                                            </con1:actions>
+                                        </con1:case>
+                                        <con1:default/>
+                                    </con1:ifThenElse>
+                                    <con1:insert varName="ForEachResponse">
+                                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f60</con2:id>
+                                        <con1:location>
+                                            <con2:xpathText>.</con2:xpathText>
+                                        </con1:location>
+                                        <con1:where>last-child</con1:where>
+                                        <con1:expr>
+                                            <con2:xqueryText>$Response</con2:xqueryText>
+                                        </con1:expr>
+                                    </con1:insert>
+                                </con1:responseTransform>
+                            </con1:wsCallout>
+                        </con1:actions>
+                    </con1:foreach>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="balInq_response-N3f57c7ff.79382b7a.0.14d902488bb.N7fde" type="response">
+            <con:stage name="ResponseProcessing">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con5:replace varName="body" contents-only="true" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f28</con2:id>
+                        <con4:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con4:location>
+                        <con4:expr>
+                            <con2:xsltTransform>
+                                <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_balInq_Rs"/>
+                                <con2:input>$ForEachResponse</con2:input>
+                            </con2:xsltTransform>
+                        </con4:expr>
+                    </con5:replace>
+                    <con1:replace varName="body" contents-only="true" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031aee.57acc6ea.0.14dde6cc4b3.N7fcd</con2:id>
+                        <con1:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform>
+                                <con2:resource ref="ESBMetadata/XQuery/ESBHeader_Rs"/>
+                                <con2:param name="ESBMsgResponse">
+                                    <con2:path>$body/*[1]</con2:path>
+                                </con2:param>
+                                <con2:param name="ESBMsgInput">
+                                    <con2:path>$payload</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="custAcctInquiry_request-N3f57c7ff.79382b7a.0.14d902488bb.N7fdf" type="request">
+            <con:stage name="RouteProcessing">
+                <con:context>
+                    <con1:userNsDecl prefix="v1" namespace="http://xmlns.Brenda/ESB/EO/Accounts/Account/V1" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                    <con1:userNsDecl prefix="fin" namespace="http://www.Core Banking.com/fixml" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:assign varName="ForEachResponse" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7fcb</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText>&lt;ForEachFiXml xsi:schemaLocation="http://www.Core Banking.com/fixml BalInq.xsd" xmlns="http://www.Core Banking.com/fixml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/></con2:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con1:foreach xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7fd9</con2:id>
+                        <con1:variable>body</con1:variable>
+                        <con1:expression>
+                            <con2:xpathText>./v1:ESBMsg/v1:RqData/v1:Account</con2:xpathText>
+                        </con1:expression>
+                        <con1:value-variable>Foreach</con1:value-variable>
+                        <con1:index-variable>Index</con1:index-variable>
+                        <con1:total-variable>Count</con1:total-variable>
+                        <con1:actions>
+                            <con1:wsCallout>
+                                <con2:id>_ActionId-N3f57c7ff.79382b7a.0.14d902488bb.N7eae</con2:id>
+                                <con1:service ref="Core BankingProv/Business/CORE_Http_Adapter" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                <con1:request>
+                                    <con1:payload wrapped="false">Request</con1:payload>
+                                </con1:request>
+                                <con1:response>
+                                    <con1:payload wrapped="false">Response</con1:payload>
+                                </con1:response>
+                                <con1:requestTransform>
+                                    <con1:assign varName="Request">
+                                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f63</con2:id>
+                                        <con1:expr>
+                                            <con2:xsltTransform>
+                                                <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_custAcctInquiry_Rq"/>
+                                                <con2:input>$body/*</con2:input>
+                                                <con2:param name="date">
+                                                    <con2:path>fn:current-dateTime()</con2:path>
+                                                </con2:param>
+                                                <con2:param name="index">
+                                                    <con2:path>data(xs:int($Index))</con2:path>
+                                                </con2:param>
+                                            </con2:xsltTransform>
+                                        </con1:expr>
+                                    </con1:assign>
+                                    <con3:report>
+                                        <con2:id>_ActionId-a031aea.17563fb5.0.14f26518ca7.N7ff8</con2:id>
+                                        <con3:expr>
+                                            <con2:xqueryText>$Request</con2:xqueryText>
+                                        </con3:expr>
+                                        <con3:labels>
+                                            <con3:key>ESBMessageId</con3:key>
+                                            <con3:varName>body</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./*:ESBMsg/*:MsgID</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                        <con3:labels>
+                                            <con3:key>Operation</con3:key>
+                                            <con3:varName>inbound</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./ctx:service/ctx:operation</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                    </con3:report>
+                                </con1:requestTransform>
+                                <con1:responseTransform>
+                                    <con3:report>
+                                        <con2:id>_ActionId-a031aea.17563fb5.0.14f26518ca7.N7ff5</con2:id>
+                                        <con3:expr>
+                                            <con2:xqueryText>$Response</con2:xqueryText>
+                                        </con3:expr>
+                                        <con3:labels>
+                                            <con3:key>ESBMessageId</con3:key>
+                                            <con3:varName>body</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./*:ESBMsg/*:MsgID</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                        <con3:labels>
+                                            <con3:key>Operation</con3:key>
+                                            <con3:varName>outbound</con3:varName>
+                                            <con3:value>
+                                                <con2:xpathText>./ctx:service/ctx:operation</con2:xpathText>
+                                            </con3:value>
+                                        </con3:labels>
+                                    </con3:report>
+                                    <con1:ifThenElse>
+                                        <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7d6f</con2:id>
+                                        <con1:case id="_BranchId-a0322d5.2c30ea22.0.15495ff7564.N7d6e">
+                                            <con1:condition>
+                                                <con2:xqueryText>$inbound/ctx:service/ctx:operation='custAcctInquiry'</con2:xqueryText>
+                                            </con1:condition>
+                                            <con1:actions>
+                                                <con1:assign varName="AccountID">
+                                                    <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7c86</con2:id>
+                                                    <con1:expr>
+                                                        <con2:xqueryText><![CDATA[<fin:executeCore BankingScriptResponse>
+<fin:executeCore BankingScript_CustomData>
+<fin:CustAcctInquiry_RES>
+<fin:AcctDtls>
+<fin:AccountID>{data($Request/*:Body/*:executeCore BankingScriptRequest/*:executeCore BankingScript_CustomData/*:CustAcctInquiry_REQ/*:AccountID)}</fin:AccountID>
+</fin:AcctDtls>
+</fin:CustAcctInquiry_RES>
+</fin:executeCore BankingScript_CustomData>
+</fin:executeCore BankingScriptResponse>]]></con2:xqueryText>
+                                                    </con1:expr>
+                                                </con1:assign>
+                                                <con1:insert varName="Response">
+                                                    <con2:id>_ActionId-a0322d5.2c30ea22.0.15495ff7564.N7cc3</con2:id>
+                                                    <con1:location>
+                                                        <con2:xpathText>$Response/fin:Body</con2:xpathText>
+                                                    </con1:location>
+                                                    <con1:where>first-child</con1:where>
+                                                    <con1:expr>
+                                                        <con2:xqueryText>$AccountID</con2:xqueryText>
+                                                    </con1:expr>
+                                                </con1:insert>
+                                            </con1:actions>
+                                        </con1:case>
+                                        <con1:default/>
+                                    </con1:ifThenElse>
+                                    <con1:insert varName="ForEachResponse">
+                                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f60</con2:id>
+                                        <con1:location>
+                                            <con2:xpathText>.</con2:xpathText>
+                                        </con1:location>
+                                        <con1:where>last-child</con1:where>
+                                        <con1:expr>
+                                            <con2:xqueryText>$Response</con2:xqueryText>
+                                        </con1:expr>
+                                    </con1:insert>
+                                </con1:responseTransform>
+                            </con1:wsCallout>
+                        </con1:actions>
+                    </con1:foreach>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline name="custAcctInquiry_response-N3f57c7ff.79382b7a.0.14d902488bb.N7fde" type="response">
+            <con:stage name="ResponseProcessing">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:actions>
+                    <con5:replace varName="body" contents-only="true" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-a031aef.6bb3971a.0.14e0febd852.N7f28</con2:id>
+                        <con4:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con4:location>
+                        <con4:expr>
+                            <con2:xsltTransform>
+                                <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_custAcctInquiry_Rs"/>
+                                <con2:input>$ForEachResponse</con2:input>
+                            </con2:xsltTransform>
+                        </con4:expr>
+                    </con5:replace>
+                    <con1:replace varName="body" contents-only="true" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id>_ActionId-a031aee.57acc6ea.0.14dde6cc4b3.N7fcd</con2:id>
+                        <con1:location>
+                            <con2:xpathText>.</con2:xpathText>
+                        </con1:location>
+                        <con1:expr>
+                            <con2:xqueryTransform>
+                                <con2:resource ref="ESBMetadata/XQuery/ESBHeader_Rs"/>
+                                <con2:param name="ESBMsgResponse">
+                                    <con2:path>$body/*[1]</con2:path>
+                                </con2:param>
+                                <con2:param name="ESBMsgInput">
+                                    <con2:path>$payload</con2:path>
+                                </con2:param>
+                            </con2:xqueryTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="Message Flow">
+                <con:request>request-N3f57c7ff.79382b7a.0.14d902488bb.N7fe6</con:request>
+                <con:response>response-N3f57c7ff.79382b7a.0.14d902488bb.N7fe5</con:response>
+            </con:pipeline-node>
+            <con:branch-node name="Operations" type="operation">
+                <con:context xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config"/>
+                <con:branch-table>
+                    <con:branch name="balInq">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="balInq_Route_To_Business_Using_ForEach">
+                                <con:request>balInq_request-N3f57c7ff.79382b7a.0.14d902488bb.N7fdf</con:request>
+                                <con:response>balInq_response-N3f57c7ff.79382b7a.0.14d902488bb.N7fde</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="custAcctInquiry">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="custAcctInquiry_Route_To_Business_Using_ForEach">
+                                <con:request>custAcctInquiry_request-N3f57c7ff.79382b7a.0.14d902488bb.N7fdf</con:request>
+                                <con:response>custAcctInquiry_response-N3f57c7ff.79382b7a.0.14d902488bb.N7fde</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="queryLoanCalculator">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:route-node name="RouteNode1">
+                                <con:context/>
+                                <con:actions>
+                                    <con1:route>
+                                        <con2:id>_ActionId-7f000101.46c56253.0.16469ef7eda.N7f61</con2:id>
+                                        <con1:service ref="Core BankingProv/Business/CORE_Http_Adapter" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                        <con1:outboundTransform>
+                                            <con3:replace varName="body" contents-only="true">
+                                                <con2:id>_ActionId-7f000101.46c56253.0.16469ef7eda.N7f5e</con2:id>
+                                                <con3:location>
+                                                    <con2:xpathText>.</con2:xpathText>
+                                                </con3:location>
+                                                <con3:expr>
+                                                    <con2:xsltTransform>
+                                                        <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_loanCalculator_Rq"/>
+                                                        <con2:input>$body/*[1]</con2:input>
+                                                    </con2:xsltTransform>
+                                                </con3:expr>
+                                            </con3:replace>
+                                        </con1:outboundTransform>
+                                        <con1:responseTransform>
+                                            <con3:assign varName="firesponse">
+                                                <con2:id>_ActionId-7f000101.N1a185abb.0.164fa166e42.N7ff5</con2:id>
+                                                <con3:expr>
+                                                    <con2:xqueryText>$body/*</con2:xqueryText>
+                                                </con3:expr>
+                                            </con3:assign>
+                                            <con3:replace varName="body" contents-only="true">
+                                                <con2:id>_ActionId-7f000101.46c56253.0.16469ef7eda.N7f5b</con2:id>
+                                                <con3:location>
+                                                    <con2:xpathText>.</con2:xpathText>
+                                                </con3:location>
+                                                <con3:expr>
+                                                    <con2:xsltTransform>
+                                                        <con2:resource ref="Core BankingProv/Transformation/Account/xsl/CORE_AccountPS_loanCalculator_Rs"/>
+                                                        <con2:input>$body/*[1]</con2:input>
+                                                    </con2:xsltTransform>
+                                                </con3:expr>
+                                            </con3:replace>
+                                        </con1:responseTransform>
+                                    </con1:route>
+                                </con:actions>
+                            </con:route-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:branch-node>
+        </con:flow>
+        <con:shared-variables>
+            <con:variable>Response</con:variable>
+            <con:variable>localvar</con:variable>
+            <con:variable>Request</con:variable>
+        </con:shared-variables>
+    </con:router>
+</con:pipelineEntry>
