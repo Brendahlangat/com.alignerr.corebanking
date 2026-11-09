@@ -21,17 +21,6 @@
             </response>
          </method>
       </resource>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-       
       <resource path="/inquireAccount">
          <method name="GET" soa:wsdlOperation="inquireAccount">
             <request>
@@ -45,13 +34,6 @@
             </response>
          </method>
       </resource>
-      
-      
-      
-      
-      
-      
-      
    </resources>
 </application>]]></con:wadl>
   <con:dependencies>

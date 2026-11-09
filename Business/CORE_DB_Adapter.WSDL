@@ -17,57 +17,21 @@
   <wsdl:message name="QueryCustomerAccountRsMsg">
     <wsdl:part name="payload" element="adp:QueryCustomerAccountOutputCollection" />
   </wsdl:message>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <wsdl:message name="InquireAccountRqMsg">
     <wsdl:part name="payload" element="adp:InquireAccountInput" />
   </wsdl:message>
   <wsdl:message name="InquireAccountRsMsg">
     <wsdl:part name="payload" element="adp:InquireAccountOutputCollection" />
   </wsdl:message>
-  
-  
-  
-  
-  
   <wsdl:portType name="Core BankingDBAdapterPort">
     <wsdl:operation name="queryCustomerAccount">
       <wsdl:input message="adp:QueryCustomerAccountRqMsg" />
       <wsdl:output message="adp:QueryCustomerAccountRsMsg" />
     </wsdl:operation>
-
     <wsdl:operation name="inquireAccount">
       <wsdl:input message="adp:InquireAccountRqMsg" />
       <wsdl:output message="adp:InquireAccountRsMsg" />
     </wsdl:operation>
-
   </wsdl:portType>
   <wsdl:binding name="Core BankingDBAdapterPortBinding" type="adp:Core BankingDBAdapterPort">
     <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca" />
