@@ -25,9 +25,9 @@
           <xsl:if test="app:BG/app:billercode">
             <eo:Biller>
               <com:BillerIdentifier>
-                <xsl:if test="app:BG/app:bankId">
+                <xsl:if test="app:BG/app:tenantId">
                   <com:BankID>
-                    <xsl:value-of select="app:BG/app:bankId"/>
+                    <xsl:value-of select="app:BG/app:tenantId"/>
                   </com:BankID>
                 </xsl:if>
                 <xsl:if test="app:BG/app:billAcctId">

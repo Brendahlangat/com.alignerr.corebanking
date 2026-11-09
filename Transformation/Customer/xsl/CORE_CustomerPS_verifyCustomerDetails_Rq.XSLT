@@ -4,7 +4,7 @@
   <oracle-xsl-mapper:schema>
     <oracle-xsl-mapper:mapSources>
       <oracle-xsl-mapper:source type="XSD">
-        <oracle-xsl-mapper:schema location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd"/>
+        <oracle-xsl-mapper:schema location="../../../MDS/CustomerEO.xsd"/>
         <oracle-xsl-mapper:rootElement name="ESBMsg" namespace="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1"/>
       </oracle-xsl-mapper:source>
     </oracle-xsl-mapper:mapSources>
@@ -31,7 +31,7 @@
             <LanguageId/>
           </MessageKey>
           <RequestMessageInfo>
-            <BankId>54</BankId>
+            <tenantId>54</tenantId>
             <TimeZone/>
             <EntityId/>
             <EntityType/>
@@ -56,9 +56,9 @@
       <Body>
         <verifyCustomerDetailsRequest>
           <CustomerVerifyRq>
-            <cifId>
+            <recordId>
               <xsl:value-of select="/eo:ESBMsg/eo:RqData/eo:Customer/com:CustomerIdentifier/com:CustomerID"/>
-            </cifId>
+            </recordId>
             <decision>Approve</decision>
             <entityName>RetailCustomer</entityName>
           </CustomerVerifyRq>
@@ -71,8 +71,8 @@
         <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML.xsd">
             <con:schema ref="ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML"/>
         </con:mapperDependency>
-        <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd">
-            <con:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO"/>
+        <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
+            <con:schema ref="Core BankingProv/MDS/CustomerEO"/>
         </con:mapperDependency>
     </con:dependencies>
 </con:xsltEntry>

@@ -33,7 +33,7 @@
             </ChannelId>
           </MessageKey>
           <RequestMessageInfo>
-            <BankId>54</BankId>
+            <tenantId>54</tenantId>
              <TimeZone/>
             <EntityId/>
             <EntityType/>

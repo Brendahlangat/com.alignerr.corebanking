@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:schemaEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
+    <con:schema><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="QueryCustomerAccountInput" type="QueryCustomerAccountInputType" />
+  <xs:complexType name="QueryCustomerAccountInputType">
+    <xs:sequence>
+      <xs:element name="tenantId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="internalRecordId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="externalRecordId" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryCustomerAccountOutputCollection" type="QueryCustomerAccountOutputCollectionType" />
+  <xs:complexType name="QueryCustomerAccountOutputCollectionType">
+    <xs:sequence>
+      <xs:element name="QueryCustomerAccountOutput" type="InquireAccountOutputType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+<xs:element name="InquireAccountInput" type="InquireAccountInputType" />
+  <xs:complexType name="InquireAccountInputType">
+    <xs:sequence>
+<xs:element name="tenantId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="internalRecordId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="externalRecordId" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InquireAccountOutputCollection" type="InquireAccountOutputCollectionType" />
+  <xs:complexType name="InquireAccountOutputCollectionType">
+    <xs:sequence>
+      <xs:element name="InquireAccountOutput" type="InquireAccountOutputType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InquireAccountOutputType">
+    <xs:sequence>
+      <xs:element name="tenantId" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="accountReference" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="AccountCcy" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="Branch" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="accountLabel" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="OpenDate" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="recordId" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="AccountType" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="ProductCd" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="AccCategory" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="ClosureFlag" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="ClosureDate" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="InactiveStatus" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="sourceTenantId" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="associatedRecordId" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="displayName" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="externalReference" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="assignedOwnerName" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="addressLine1" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="addressLine2" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="addressLine3" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="locality" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="CountryCode" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="postalCode" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="phoneNumber" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="mobileNumber" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="emailAddress" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="locationCode" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="recordCategory" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="recordSubcategory" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="Status" type="xs:string" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>]]></con:schema>
+    <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
+</con:schemaEntry>

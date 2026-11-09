@@ -26,7 +26,7 @@
             <eo:Biller>
               <com:BillerIdentifier>
                 <com:BankID>
-                  <xsl:value-of select="app:BG/app:bankId"/>
+                  <xsl:value-of select="app:BG/app:tenantId"/>
                 </com:BankID>
                 <com:AccountID>
                   <xsl:value-of select="app:BG/app:billAcctId"/>

@@ -5,13 +5,13 @@
     <!--SPECIFICATION OF MAP SOURCES AND TARGETS, DO NOT MODIFY.-->
     <oracle-xsl-mapper:mapSources>
       <oracle-xsl-mapper:source type="XSD">
-        <oracle-xsl-mapper:schema location="../../../Adapter/db/CORE_DB_Adapter.xsd"/>
-        <oracle-xsl-mapper:rootElement name="AccountInqByCustIdOutputCollection" namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db"/>
+        <oracle-xsl-mapper:schema location="../../../Business/CORE_DB_Adapter.xsd"/>
+        <oracle-xsl-mapper:rootElement name="InquireAccountOutputCollection" namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db"/>
       </oracle-xsl-mapper:source>
     </oracle-xsl-mapper:mapSources>
     <oracle-xsl-mapper:mapTargets>
       <oracle-xsl-mapper:target type="XSD">
-        <oracle-xsl-mapper:schema location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd"/>
+        <oracle-xsl-mapper:schema location="../../../MDS/CustomerEO.xsd"/>
         <oracle-xsl-mapper:rootElement name="ESBMsg" namespace="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1"/>
       </oracle-xsl-mapper:target>
     </oracle-xsl-mapper:mapTargets>
@@ -21,81 +21,81 @@
   <xsl:template match="/">
     <eo:ESBMsg>
       <eo:RsData>
-        <xsl:for-each select="/app:AccountInqByCustIdOutputCollection/app:AccountInqByCustIdOutput">
+        <xsl:for-each select="/app:InquireAccountOutputCollection/app:InquireAccountOutput">
           <eo:Customer>
             <com:CustomerIdentifier>
               <com:BankID>
-                <xsl:value-of select="app:BankId"/>
+                <xsl:value-of select="app:tenantId"/>
               </com:BankID>
               <com:CustomerID>
-                <xsl:value-of select="app:CIFNo"/>
+                <xsl:value-of select="app:recordId"/>
               </com:CustomerID>
               <com:BranchID>
-                <xsl:value-of select="app:BranchCode"/>
+                <xsl:value-of select="app:locationCode"/>
               </com:BranchID>
             </com:CustomerIdentifier>
             <eo:CustomerType>
-              <xsl:value-of select="app:CustCategory"/>
+              <xsl:value-of select="app:recordCategory"/>
             </eo:CustomerType>
             <eo:CustomerCategoryType>
-              <xsl:value-of select="app:CustCategoryType"/>
+              <xsl:value-of select="app:recordSubcategory"/>
             </eo:CustomerCategoryType>
             <com:Person>
               <com:PersonName>
                 <com:FullName>
-                  <xsl:value-of select="app:CustName"/>
+                  <xsl:value-of select="app:displayName"/>
                 </com:FullName>
               </com:PersonName>
             </com:Person>
-            <com:Address>
+            <com:addressText>
               <com:LineOne>
-                <xsl:value-of select="app:Address1"/>
+                <xsl:value-of select="app:addressLine1"/>
               </com:LineOne>
               <com:LineTwo>
-                <xsl:value-of select="app:Address2"/>
+                <xsl:value-of select="app:addressLine2"/>
               </com:LineTwo>
               <com:LineThree>
-                <xsl:value-of select="app:Address3"/>
+                <xsl:value-of select="app:addressLine3"/>
               </com:LineThree>
               <com:CityName>
-                <xsl:value-of select="app:CityTown"/>
+                <xsl:value-of select="app:locality"/>
               </com:CityName>
               <com:CountryName>
                 <xsl:value-of select="app:CountryCode"/>
               </com:CountryName>
               <com:PostalCode>
-                <xsl:value-of select="app:ZipCode"/>
+                <xsl:value-of select="app:postalCode"/>
               </com:PostalCode>
-            </com:Address>
+            </com:addressText>
             <com:Phone>
               <com:PhoneType>CELL</com:PhoneType>
               <com:CompleteNumber>
-                <xsl:value-of select="app:CellNo"/>
+                <xsl:value-of select="app:mobileNumber"/>
               </com:CompleteNumber>
             </com:Phone>
             <com:Phone>
               <com:PhoneType>PHONE</com:PhoneType>
               <com:LocalNumber>
-                <xsl:value-of select="app:PhoneNo"/>
+                <xsl:value-of select="app:phoneNumber"/>
               </com:LocalNumber>
             </com:Phone>
-            <xsl:if test="string-length (app:EmailID/text()) >0">
-              <com:Email>
+            <xsl:if test="string-length (app:emailAddress/text()) >0">
+              <com:emailAddress>
                 <com:EmailAddress>
-                  <xsl:value-of select="app:EmailID"/>
+                  <xsl:value-of select="app:emailAddress"/>
                 </com:EmailAddress>
-              </com:Email>
+              </com:emailAddress>
             </xsl:if>
             <acceo:Account>
               <com:AccountIdentifier>
                 <com:BankID>
-                  <xsl:value-of select="app:BankId_1"/>
+                  <xsl:value-of select="app:sourceTenantId"/>
                 </com:BankID>
                 <com:BranchID>
                   <xsl:value-of select="app:Branch"/>
                 </com:BranchID>
                 <com:AccountID>
-                  <xsl:value-of select="app:AccountNo"/>
+                  <xsl:value-of select="app:accountReference"/>
                 </com:AccountID>
                 <com:AccountCurrency>
                   <xsl:value-of select="app:AccountCcy"/>
@@ -116,13 +116,13 @@
               <eo:Customer>
                 <com:CustomerIdentifier>
                   <com:CustomerID>
-                    <xsl:value-of select="app:CifNo"/>
+                    <xsl:value-of select="app:associatedRecordId"/>
                   </com:CustomerID>
                 </com:CustomerIdentifier>
                 <com:Person>
                   <com:PersonName>
                     <com:FullName>
-                      <xsl:value-of select="app:AccountName"/>
+                      <xsl:value-of select="app:accountLabel"/>
                     </com:FullName>
                   </com:PersonName>
                 </com:Person>
@@ -138,11 +138,11 @@
               </acceo:AccountStatus>
             </acceo:Account>
             <com:RelationshipManagerName>
-              <xsl:value-of select="app:RMName"/>
+              <xsl:value-of select="app:assignedOwnerName"/>
             </com:RelationshipManagerName>
             <com:PrimaryIdentityDocument>
               <com:IdentityDocumentID>
-                <xsl:value-of select="app:PrimaryID"/>
+                <xsl:value-of select="app:externalReference"/>
               </com:IdentityDocumentID>
             </com:PrimaryIdentityDocument>
             <eo:CustomerStatus>
@@ -150,14 +150,14 @@
             </eo:CustomerStatus>
           </eo:Customer>
         </xsl:for-each>
-        <xsl:if test="count(/app:AccountInqByCustIdOutputCollection/app:AccountInqByCustIdOutput) > 0">
+        <xsl:if test="count(/app:InquireAccountOutputCollection/app:InquireAccountOutput) > 0">
           <com:Status>
             <com:Code>ESB-00</com:Code>
             <com:Type>Success</com:Type>
             <com:Text>Account inquiry by customer id processed successfully</com:Text>
           </com:Status>
         </xsl:if>
-        <xsl:if test="count(/app:AccountInqByCustIdOutputCollection/app:AccountInqByCustIdOutput) &lt;= 0">
+        <xsl:if test="count(/app:InquireAccountOutputCollection/app:InquireAccountOutput) &lt;= 0">
           <com:Status>
             <com:Code>ESB-100</com:Code>
             <com:Type>Failue</com:Type>
@@ -169,11 +169,11 @@
   </xsl:template>
 </xsl:stylesheet>]]></con:xslt>
     <con:dependencies>
-        <con:mapperDependency location="../../../Adapter/db/CORE_DB_Adapter.xsd">
-            <con:schema ref="Core BankingProv/Adapter/db/CORE_DB_Adapter"/>
+        <con:mapperDependency location="../../../Business/CORE_DB_Adapter.xsd">
+            <con:schema ref="Core BankingProv/Business/CORE_DB_Adapter"/>
         </con:mapperDependency>
-        <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd">
-            <con:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO"/>
+        <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
+            <con:schema ref="Core BankingProv/MDS/CustomerEO"/>
         </con:mapperDependency>
     </con:dependencies>
 </con:xsltEntry>

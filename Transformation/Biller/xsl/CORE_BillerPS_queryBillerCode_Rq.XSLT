@@ -32,7 +32,7 @@
             <app:LanguageId/>
           </app:MessageKey>
           <app:RequestMessageInfo>
-            <app:BankId>54</app:BankId>
+            <app:tenantId>54</app:tenantId>
             <app:TimeZone/>
             <app:EntityId/>
             <app:EntityType/>

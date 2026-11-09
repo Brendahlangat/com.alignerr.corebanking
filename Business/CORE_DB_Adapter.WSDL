@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:wsdlEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
+    <con:wsdl><![CDATA[<wsdl:definitions name="Core BankingDBAdapter" targetNamespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:adp="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <plt:partnerLinkType name="Core BankingDBAdapterPLType">
+    <plt:role name="Core BankingDBAdapterRole">
+      <plt:portType name="adp:Core BankingDBAdapterPort" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" schemaLocation="CORE_DB_Adapter.xsd" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="QueryCustomerAccountRqMsg">
+    <wsdl:part name="payload" element="adp:QueryCustomerAccountInput" />
+  </wsdl:message>
+  <wsdl:message name="QueryCustomerAccountRsMsg">
+    <wsdl:part name="payload" element="adp:QueryCustomerAccountOutputCollection" />
+  </wsdl:message>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <wsdl:message name="InquireAccountRqMsg">
+    <wsdl:part name="payload" element="adp:InquireAccountInput" />
+  </wsdl:message>
+  <wsdl:message name="InquireAccountRsMsg">
+    <wsdl:part name="payload" element="adp:InquireAccountOutputCollection" />
+  </wsdl:message>
+  
+  
+  
+  
+  
+  <wsdl:portType name="Core BankingDBAdapterPort">
+    <wsdl:operation name="queryCustomerAccount">
+      <wsdl:input message="adp:QueryCustomerAccountRqMsg" />
+      <wsdl:output message="adp:QueryCustomerAccountRsMsg" />
+    </wsdl:operation>
+
+    <wsdl:operation name="inquireAccount">
+      <wsdl:input message="adp:InquireAccountRqMsg" />
+      <wsdl:output message="adp:InquireAccountRsMsg" />
+    </wsdl:operation>
+
+  </wsdl:portType>
+  <wsdl:binding name="Core BankingDBAdapterPortBinding" type="adp:Core BankingDBAdapterPort">
+    <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca" />
+    <wsdl:operation name="queryCustomerAccount">
+      <soap:operation soapAction="queryCustomerAccount" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="inquireAccount">
+      <soap:operation soapAction="inquireAccount" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>]]></con:wsdl>
+    <con:dependencies>
+        <con:schemaRef isInclude="false" schemaLocation="CORE_DB_Adapter.xsd" namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" ref="Core BankingProv/Business/CORE_DB_Adapter" />
+    </con:dependencies>
+    <con:targetNamespace>http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db</con:targetNamespace>
+</con:wsdlEntry>

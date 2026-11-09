@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:wadlEntry xmlns:con="http://www.bea.com/wli/sb/resources/config">
+    <con:wadl><![CDATA[<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adp="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="CORE_DB_Adapter">This is a rest service of CORE_DB_Adapter</doc>
+   <grammars>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+      <import namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" schemaLocation="CORE_DB_Adapter.xsd" />
+    </schema>
+   </grammars>
+   <resources>
+      <resource path="/queryCustomerAccount">
+         <method name="GET" soa:wsdlOperation="queryCustomerAccount">
+            <request>
+               <param name="tenantId" style="query" soa:expression="$msg.payload/adp:tenantId" default="" type="xsd:string" />
+               <param name="internalRecordId" style="query" soa:expression="$msg.payload/adp:internalRecordId" default="" type="xsd:string" />
+               <param name="externalRecordId" style="query" soa:expression="$msg.payload/adp:externalRecordId" default="" type="xsd:string" />
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:QueryCustomerAccountOutputCollection" xmlns:cns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" />
+               <representation mediaType="application/json" element="cns:QueryCustomerAccountOutputCollection" xmlns:cns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" />
+            </response>
+         </method>
+      </resource>
+      <resource path="/inquireAccount">
+         <method name="GET" soa:wsdlOperation="inquireAccount">
+            <request>
+               <param name="tenantId" style="query" soa:expression="$msg.payload/adp:tenantId" default="" type="xsd:string" />
+               <param name="internalRecordId" style="query" soa:expression="$msg.payload/adp:internalRecordId" default="" type="xsd:string" />
+               <param name="externalRecordId" style="query" soa:expression="$msg.payload/adp:externalRecordId" default="" type="xsd:string" />
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:InquireAccountOutputCollection" xmlns:cns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" />
+               <representation mediaType="application/json" element="cns:InquireAccountOutputCollection" xmlns:cns="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" />
+            </response>
+         </method>
+      </resource>
+      
+      
+      
+      
+      
+      
+      
+   </resources>
+</application>]]></con:wadl>
+    <con:dependencies>
+        <con:importSchema namespace="http://xmlns.Brenda/ESB/PS/Core Banking/Adapter/db" schemaLocation="CORE_DB_Adapter.xsd" ref="Core BankingProv/Business/CORE_DB_Adapter" />
+    </con:dependencies>
+</con:wadlEntry>

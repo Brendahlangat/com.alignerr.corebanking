@@ -32,9 +32,9 @@
             <app:LanguageId/>
           </app:MessageKey>
           <app:RequestMessageInfo>
-            <app:BankId>
+            <app:tenantId>
               <xsl:value-of select="/eo:ESBMsg/eo:RqData/eo:Biller/com:BillerIdentifier/com:BankID"/>
-            </app:BankId>
+            </app:tenantId>
             <app:TimeZone/>
             <app:EntityId/>
             <app:EntityType/>

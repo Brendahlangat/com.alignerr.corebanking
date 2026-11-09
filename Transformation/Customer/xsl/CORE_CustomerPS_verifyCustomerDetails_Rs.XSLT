@@ -10,7 +10,7 @@
     </oracle-xsl-mapper:mapSources>
     <oracle-xsl-mapper:mapTargets>
       <oracle-xsl-mapper:target type="XSD">
-        <oracle-xsl-mapper:schema location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd"/>
+        <oracle-xsl-mapper:schema location="../../../MDS/CustomerEO.xsd"/>
         <oracle-xsl-mapper:rootElement name="ESBMsg" namespace="http://xmlns.Brenda/ESB/EO/Parties/Customer/V1"/>
       </oracle-xsl-mapper:target>
     </oracle-xsl-mapper:mapTargets>
@@ -57,8 +57,8 @@
         <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML.xsd">
             <con:schema ref="ESBMetadata/ComponentLibrary/ProviderServices/Core Banking/AppMetadata/xsds/FIXML"/>
         </con:mapperDependency>
-        <con:mapperDependency location="../../../../ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO.xsd">
-            <con:schema ref="ESBMetadata/ComponentLibrary/EnterpriseObjects/Parties/Customer/V1/CustomerEO"/>
+        <con:mapperDependency location="../../../MDS/CustomerEO.xsd">
+            <con:schema ref="Core BankingProv/MDS/CustomerEO"/>
         </con:mapperDependency>
     </con:dependencies>
 </con:xsltEntry>
